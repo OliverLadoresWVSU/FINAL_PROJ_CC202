@@ -1,3 +1,11 @@
+/*
+Program Title: CLI Diary Application
+Submitted by: Oliver Ladores
+              Lemmuel Dave Dañosos
+Program Description: This program is a CLI Diary Application that allows the
+                     user to create, read, update, and delete entries.
+*/
+
 #include <iostream>
 #include <string>
 #include <fstream>
