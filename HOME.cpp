@@ -53,3 +53,51 @@ int menu()
 
     return choice;
 }
+
+void openEntry()
+{
+    std::string filename;
+    std::cout << "Enter the name of the file you want to open: ";
+    std::cin >> filename;
+
+    std::ifstream file;
+    file.open(filename);
+
+    if (file.is_open())
+    {
+        cout << "Here are the contents of the file: " << endl;
+
+        std::string line;
+        while (std::getline(file, line))
+        {
+            std::cout << line << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "File not found." << std::endl;
+    }
+    file.close();
+}
+
+void createEntry(){
+    std::string filename;
+    std::cout << "Enter the name of the file you want to create: ";
+    std::cin >> filename;
+
+    std::ofstream file;
+    file.open(filename);
+
+    if (file.is_open())
+    {
+        std::string line;
+        std::cout << "Enter the contents of the file: ";
+        std::cin >> line;
+        file << line;
+    }
+    else
+    {
+        std::cout << "File not found." << std::endl;
+    }
+    file.close();
+}
