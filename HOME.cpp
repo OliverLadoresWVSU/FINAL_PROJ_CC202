@@ -65,7 +65,7 @@ void openEntry()
 
     if (file.is_open())
     {
-        cout << "Here are the contents of the file: " << endl;
+        std::cout << "Here are the contents of the file: " << std::endl;
 
         std::string line;
         while (std::getline(file, line))
