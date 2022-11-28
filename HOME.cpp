@@ -41,6 +41,11 @@ int main()
     return 0;
 }
 
+/**
+ * @brief This function displays the menu and returns the user's choice.
+ * 
+ * @return int 
+ */
 int menu()
 {
     int choice;
@@ -54,6 +59,10 @@ int menu()
     return choice;
 }
 
+/**
+ * @brief This function opens a diary entry.
+ * 
+ */
 void openEntry()
 {
     std::string filename;
@@ -80,6 +89,10 @@ void openEntry()
     file.close();
 }
 
+/**
+ * @brief This function creates a diary entry object and save it to a file.
+ * 
+ */
 void createEntry(){
     std::string filename;
     std::cout << "Enter the name of the file you want to create: ";
