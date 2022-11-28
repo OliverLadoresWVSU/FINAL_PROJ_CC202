@@ -11,6 +11,8 @@ Program Description: This program is a CLI Diary Application that allows the
 #include <fstream>
 
 int menu();
+void openEntry();
+void createEntry();
 
 int main()
 {
@@ -19,7 +21,13 @@ int main()
     switch (choice)
     {
     case 1:
-        std::cout << "You chose 1" << std::endl;
+        std::cout << "You chose to open an entry" << std::endl;
+        openEntry();
+        break;
+
+    case 2:
+        std::cout << "You chose to create an entry" << std::endl;
+        createEntry();
         break;
     
     case 0:
