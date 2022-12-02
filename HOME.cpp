@@ -104,9 +104,11 @@ void createEntry(){
     if (file.is_open())
     {
         std::string line;
-        std::cout << "Enter the contents of the file: ";
-        std::cin >> line;
-        file << line;
+        std::cout << "Enter the contents of the file. Enter \"~END~\" to stop writing to the file:\n";
+        do{
+            file << line << std::endl;
+            std::getline(std::cin, line); 
+        }while(line != "~END~");
     }
     else
     {
