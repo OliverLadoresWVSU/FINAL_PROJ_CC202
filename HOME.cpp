@@ -9,6 +9,7 @@ Program Description: This program is a CLI Diary Application that allows the
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <filesystem>
 
 int menu();
 void openEntry();
@@ -16,26 +17,29 @@ void createEntry();
 
 int main()
 {
-    int choice = menu();
+    // Display the menu and get the user's choice until the user chooses to exit.
+    while(true)
+    {   
+        int choice = menu();
+        switch (choice)
+        {
+        case 1:
+            std::cout << std::endl << "You chose to open an entry" << std::endl;
+            openEntry();
+            break;
 
-    switch (choice)
-    {
-    case 1:
-        std::cout << "You chose to open an entry" << std::endl;
-        openEntry();
-        break;
+        case 2:
+            std::cout << std::endl << "You chose to create an entry" << std::endl;
+            createEntry();
+            break;
+        
+        case 0:
+            std::cout << std::endl << "You chose to exit. " << std::endl;
+            exit(0);
 
-    case 2:
-        std::cout << "You chose to create an entry" << std::endl;
-        createEntry();
-        break;
-    
-    case 0:
-        std::cout << "You chose to exit. " << std::endl;
-        exit(0);
-
-    default:
-        break;
+        default:
+            break;
+        }
     }
 
     return 0;
@@ -49,10 +53,12 @@ int main()
 int menu()
 {
     int choice;
+    std::cout << std::endl<< "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     std::cout << "This is a diary program." << std::endl;
     std::cout << "Open an entry (1)" << std::endl;
     std::cout << "Create a new entry (2)" << std::endl;
     std::cout << "Exit (0)" << std::endl;
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl << std::endl;
 
     std::cin >> choice;
 
@@ -65,7 +71,13 @@ int menu()
  */
 void openEntry()
 {
+    // Print the list of files in the current directory.
+    std::string path = std::filesystem::current_path().string();
+    for (const auto & entry : std::filesystem::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
     std::string filename;
+
+    // Prompt the user to enter the name of the file they want to open.
     std::cout << "Enter the name of the file you want to open: ";
     std::cin >> filename;
 
@@ -81,6 +93,8 @@ void openEntry()
         {
             std::cout << line << std::endl;
         }
+
+        system("pause");
     }
     else
     {
