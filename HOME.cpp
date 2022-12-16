@@ -53,6 +53,7 @@ int main()
 int menu()
 {
     int choice;
+    system("cls");
     std::cout << std::endl<< "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     std::cout << "This is a diary program." << std::endl;
     std::cout << "Open an entry (1)" << std::endl;
@@ -83,6 +84,7 @@ void openEntry()
 
     std::ifstream file;
     file.open(filename);
+    system("cls");
 
     if (file.is_open())
     {
@@ -94,13 +96,16 @@ void openEntry()
             std::cout << line << std::endl;
         }
 
-        system("pause");
     }
     else
     {
         std::cout << "File not found." << std::endl;
     }
     file.close();
+    
+    system("pause");
+    system("cls");
+
 }
 
 /**
@@ -109,6 +114,8 @@ void openEntry()
  */
 void createEntry(){
     std::string filename;
+    
+    system("cls");
     std::cout << "Enter the name of the file you want to create: ";
     std::cin >> filename;
 
@@ -129,4 +136,7 @@ void createEntry(){
         std::cout << "File not found." << std::endl;
     }
     file.close();
+
+    system("pause");
+    system("cls");
 }
